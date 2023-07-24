@@ -4,7 +4,7 @@ public class setArray
     {
         string[] arr = new string[5];
 
-        int flagX = 0; // флаг для парсинга строки координат X
+        int flag = 0; // флаг для парсинга строки 
 
         Console.WriteLine("Введите пять элементов массива через запятую:");
         // вводим строку
@@ -14,12 +14,12 @@ public class setArray
         {
             for (int i = 0; i < inputX.Length; i++)
             {
-                if (inputX[i] == ',') flagX++;
-                if (inputX[i] != ',' && flagX == 0) arr[flagX] += inputX[i];
-                if (inputX[i] != ',' && flagX == 1) arr[flagX] += inputX[i];
-                if (inputX[i] != ',' && flagX == 2) arr[flagX] += inputX[i];
-                if (inputX[i] != ',' && flagX == 3) arr[flagX] += inputX[i];
-                if (inputX[i] != ',' && flagX == 4) arr[flagX] += inputX[i];
+                if (inputX[i] == ',') flag++;
+                if (inputX[i] != ',' && flag == 0) arr[flag] += inputX[i];
+                if (inputX[i] != ',' && flag == 1) arr[flag] += inputX[i];
+                if (inputX[i] != ',' && flag == 2) arr[flag] += inputX[i];
+                if (inputX[i] != ',' && flag == 3) arr[flag] += inputX[i];
+                if (inputX[i] != ',' && flag == 4) arr[flag] += inputX[i];
 
             }
         }
@@ -28,17 +28,59 @@ public class setArray
         return arr;
     }
 
-    public static string[] OutputArray(string[] array)
+    public static string[] createOutputArray(string[] array)
     {
         int size = array.Length;
         int sizeOut = 0;
 
-        string[] arrayOut = new string[size]; 
+        string[] arrayOut = new string[size];
 
         for (int i = 0; i < size; i++)
+        {
+            if (array[i].Length <= 3) sizeOut++;
+        }
+        if(sizeOut > 0) 
+        {
+            string[] arr = new string[sizeOut];
+            return arr;
+        }
+        else 
+        {
+            Console.WriteLine($" Массив не получился =( ");
+            string[] arr = new string[0];
+            return arr;
+        }
+
+        
+    }
+    public static int fillOutputArray(string[] array, string[] arrayOut)
+    {
+        int size = array.Length;
+        int j = 0;
+
+        for (int i = 0; i < size; i++)
+        {
+            if (array[i].Length <= 3)
             {
-                if(array[i].Length <= 3) sizeOut++;
+                arrayOut[j] = array[i]; 
+                j++;
             }
-        return arr;
+        }
+        return 1;
+    }
+    
+    public static string Print(string[] array)
+    {
+        string result = string.Empty;
+
+        int cell = array.GetLength(0);
+
+        for (int i = 0; i < cell; i++)
+        {
+            
+            result += $"{array[i]}({i}) ";
+            result += "\n";
+        }
+        return result;
     }
 }

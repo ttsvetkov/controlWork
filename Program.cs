@@ -2,6 +2,12 @@
 
 using static setArray;
 
-string[] array = ConsoleInputArray();
+string[] array = ConsoleInputArray(); // запрос к пользователю и заполнение массива строк
+string[] outArray = createOutputArray(array); // создаем массив нужной размерности
 
-Console.WriteLine($" {array[0]}");
+if (outArray.Length > 0)
+{
+    fillOutputArray(array, outArray);
+    string output = Print(outArray);
+    System.Console.WriteLine(output);
+}
