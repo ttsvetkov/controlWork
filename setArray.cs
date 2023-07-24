@@ -27,4 +27,18 @@ public class setArray
 
         return arr;
     }
+
+    public static string[] OutputArray(string[] array)
+    {
+        int size = array.Length;
+        int sizeOut = 0;
+
+        string[] arrayOut = new string[size]; 
+
+        for (int i = 0; i < size; i++)
+            {
+                if(array[i].Length <= 3) sizeOut++;
+            }
+        return arr;
+    }
 }
